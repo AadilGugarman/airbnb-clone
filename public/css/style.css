@@ -1,0 +1,69 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+body {
+  padding: 0rem 2rem;
+}
+
+/* navbar section */
+.navbar {
+  height: 5rem;
+}
+
+.fa-airbnb {
+  font-size: 2rem;
+}
+.navbar-brand {
+  color: #ff5a5f !important;
+  font-size: 1.5rem;
+}
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  padding: 0rem 2rem;
+  border-radius: 1rem;
+  border: 1px solid #222222;
+}
+
+/* home section */
+.card {
+  border: none;
+}
+.card img {
+  object-fit: cover;
+  height: 200px;
+  border-radius: 0.75rem !important;
+}
+.card-body {
+  padding: 0 !important;
+}
+.card-text {
+  margin: 0;
+}
+
+/* footer section */
+.footer {
+  height: 80px;
+  padding: 2rem 0rem;
+}
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-row,
+.footer-row2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.footer-row a {
+  text-decoration: none;
+}
