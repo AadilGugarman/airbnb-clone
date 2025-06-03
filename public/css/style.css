@@ -6,11 +6,20 @@
 }
 
 body {
+  display: flex;
+  color: #222222;
+  flex-direction: column;
+  min-height: 100vh;
   padding: 0rem 2rem;
+}
+
+main {
+  flex: 1;
 }
 
 /* navbar section */
 .navbar {
+  background-color: #fff;
   height: 5rem;
 }
 
@@ -28,12 +37,22 @@ body {
   border-radius: 1rem;
   border: 1px solid #222222;
 }
+.custom-toggler {
+  border: 2px solid #ff5a5f;
+}
+.navbar-toggler:focus {
+  border: none !important;
+  outline: none !important;
+}
+.navbar-collapse {
+  background-color: #f8f9fa;
+}
 
 /* home section */
 .card {
   border: none;
 }
-.card img {
+.home-card img {
   object-fit: cover;
   height: 200px;
   border-radius: 0.75rem !important;
@@ -41,8 +60,28 @@ body {
 .card-body {
   padding: 0 !important;
 }
+
+.card-body a {
+  text-decoration: none;
+  color: #222222;
+}
+
 .card-text {
   margin: 0;
+}
+
+.add-btn,
+.edit-btn,
+.dlt-btn {
+  background-color: #ff5a5f;
+  border: none;
+}
+
+/* show-section */
+.show-card img {
+  object-fit: cover;
+  height: 300px;
+  border-radius: 1rem;
 }
 
 /* footer section */
@@ -66,4 +105,8 @@ body {
 
 .footer-row a {
   text-decoration: none;
+  color: #222222;
+}
+.footer-row a:hover {
+  text-decoration: underline;
 }
