@@ -35,8 +35,17 @@ main {
   align-items: center;
   padding: 0rem 2rem;
   border-radius: 1rem;
-  border: 1px solid #222222;
+  border: 2px solid #ff5a5f;
 }
+.navbar-nav span {
+  color: #ff5a5f;
+  font-weight: bold;
+}
+
+.navbar-nav a:hover {
+  color: #ff5a5f;
+}
+
 .custom-toggler {
   border: 2px solid #ff5a5f;
 }

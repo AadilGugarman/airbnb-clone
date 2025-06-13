@@ -1,8 +1,8 @@
 <% layout('layouts/boilerplate')%>
-<body>
+
   <div class="container">
     <h2 class="my-2">Edit Listing</h2>
-    <form action="/listings/<%=listing._id%>/?_method=PUT" method="post">
+    <form action="/listings/<%=listing._id%>/?_method=PUT" class="needs-validation" novalidate  method="post">
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input
@@ -12,7 +12,11 @@
           value="<%=listing.title%>"
           name="listing[title]"
           placeholder="enter title"
+          required
         />
+        <div class="valid-feedback">
+      Looks good!
+    </div>
       </div>
 
       <div class="mb-3">
@@ -20,8 +24,11 @@
         <textarea
           class="form-control"
           id="description 
-          name="listing[description]"><%=listing.description %>
+          name= "listing[description]" required><%=listing.description %>
           </textarea>
+          <div class="invalid-feedback">
+        Please enter a short description.
+      </div>
       </div>
 
       <div class="mb-3">
@@ -30,10 +37,14 @@
           class="form-control"
           type="text"
           id="image"
-          value="<%=listing.price%>"
+          value="<%=listing.image%>"
           name="listing[image]"
           placeholder="enter image URL"
+          required
         />
+        <div class="invalid-feedback">
+        Please provide a valid image URL.
+      </div>
       </div>
       <div class="row">
         <div class="col-md-4">
@@ -46,7 +57,11 @@
               value="<%=listing.price%>"
               name="listing[price]"
               placeholder="enter price"
+              required
             />
+            <div class="invalid-feedback">
+        Please enter a valid price.
+      </div>
           </div>
         </div>
         <div class="col-md-8">
@@ -59,7 +74,11 @@
               name="listing[location]"
               value="<%=listing.location%>"
               placeholder="enter location"
+              required
             />
+            <div class="invalid-feedback">
+        Please provide a valid location.
+      </div>
           </div>
         </div>
       </div>
@@ -72,10 +91,14 @@
           value="<%=listing.country%>"
           name="listing[country]"
           placeholder="enter country"
+          required
         />
+        <div class="invalid-feedback">
+        Please enter a valid country name.
+      </div>
       </div>
 
       <button class="btn btn-dark edit-btn">Edit</button>
     </form>
   </div>
-</body>
+
