@@ -36,10 +36,21 @@ main {
   padding: 0rem 2rem;
   border-radius: 1rem;
   border: 2px solid #ff5a5f;
+  background-color: #f8f9fa;
 }
 .navbar-nav span {
   color: #ff5a5f;
   font-weight: bold;
+}
+
+.navbar-right a {
+  color: #ff5a5f;
+  text-decoration: none;
+  font-size: 1.15rem;
+}
+
+.navbar-right a:hover {
+  color: #222222;
 }
 
 .navbar-nav a:hover {
@@ -53,14 +64,12 @@ main {
   border: none !important;
   outline: none !important;
 }
-.navbar-collapse {
-  background-color: #f8f9fa;
-}
 
 /* home section */
 .card {
   border: none;
 }
+
 .home-card img {
   object-fit: cover;
   height: 200px;
@@ -77,6 +86,10 @@ main {
 
 .card-text {
   margin: 0;
+}
+
+.review-card {
+  padding: 0.5rem 0.75rem !important;
 }
 
 .add-btn,
