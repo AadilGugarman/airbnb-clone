@@ -2,19 +2,9 @@ const express = require('express');
 const router = express.Router({mergeParams: true});
 const Listing = require('../models/listing.js')
 const wrapAsync = require('../utils/WrapAsync.js')
-const {listingSchema} = require('../joiSchema.js')
-const  ExpressError = require('../utils/ExpressError');
-const {isLoggedIn} = require('../middleware.js')
+const {validateListings} = require('../middleware/validate.js');
+const {isLoggedIn} = require('../middleware/index.js')
 
-const validateListings = (req, res , next) =>{
-    let {error} = listingSchema.validate(req.body);
-    if(error){
-        let errMsg = error.details.map(el => el.message).join(", ");
-        throw new ExpressError (400 , errMsg)
-    } else {
-        next();
-    }
-};
 
 //All Listings Page
 router.get('/'  ,  wrapAsync  ( async (req , res)=>{
@@ -39,7 +29,7 @@ router.get('/new' , (req , res)=>{
 })
 
 //Show Page
-router.get('/:id' ,wrapAsync ( async (req , res)=>{
+router.get('/:id' ,isLoggedIn , wrapAsync ( async (req , res)=>{
      let {id} = req.params;
      const listing = await Listing.findById(id).populate('reviews');
      if (!listing) {

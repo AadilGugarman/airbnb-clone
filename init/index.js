@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const initData = require('./data.js')
 const Listing = require('../models/listing.js');
-const Review = require('../models/review.js');
+const User = require('../models/user.js');
 
 const MongoURL = 'mongodb://127.0.0.1:27017/airbnb'
 
@@ -15,14 +15,14 @@ async function main(){
     await mongoose.connect(MongoURL)
 }
 
-// const initDB =async ()=>{
-//     await Listing.insertMany(initData.data)
-
-// }
-// initDB();
-
-const delDB =async ()=>{
-     await Review.deleteMany({})
+const initDB =async ()=>{
+    await Listing.insertMany(initData.data)
 
 }
-delDB();
+initDB();
+
+// const delDB =async ()=>{
+//      await Review.deleteMany({})
+
+// }
+// delDB();
