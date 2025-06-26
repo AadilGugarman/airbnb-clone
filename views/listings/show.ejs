@@ -8,16 +8,20 @@
     <p class="card-text">&#8377 <%=listing.price%></p>
     <p class="card-text"><%=listing.location%></p>
     <p class="card-text"><%=listing.country%></p>
-    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+    <p class="card-text"><small class="text-body-secondary">owned by: <%=listing.owner.name%></small></p>
   </div>
 </div>
-
+<div class="border-bottom my-3"></div>
+<% if (currUser && listing.owner._id.equals(currUser._id)){%>
 <div class="d-flex gap-2">
 <a href="/listings/<%=listing._id%>/edit" class=" px-4 btn btn-dark edit-btn">Edit</a>
     <form  method="post" action="/listings/<%=listing._id%>?_method=DELETE">
       <button class="btn btn-dark dlt-btn ">Delete</button>
     </form> 
     </div>
+  <%}%>
+
+    <% if (currUser){ %>
     <form class="needs-validation mt-3" novalidate action="/listings/<%=listing._id%>/reviews" method="post" >
       <h3>Leave a Review</h3>
       <div class="mb-3">
@@ -37,22 +41,27 @@
     <button class=" btn btn-outline-dark">Submit</button>
     </form>
     <div class="border-bottom my-3"></div>
+    <h6>All Reviews</h6>
+  <%}%>
     
     <div class="row g-1">
-      <h6>All Reviews</h6>
+      
       <% for(let review of listing.reviews){ %>
     <div class="card  col-6 ">
       <div class="card-body review-card border">
-        <h6 class="card-title">Aadil Gugarman</h6>
+        <h6 class="card-title"><%=review.author.name%></h6>
         <p class="card-text"><%= review.comment %></p>
         <p class="card-text mb-2"><%= review.rating %> stars</p>
+      <% if (currUser && review.author._id.equals(currUser._id)){%>
         <form action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
         <button class="btn btn-dark dlt-btn btn-sm ">Delete</button>
         </form>
+      <%}%>
       </div>
     </div>
+  
     
-  <%} %>
+  <% } %>
   </div>
   
 </div>  
