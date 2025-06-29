@@ -8,20 +8,23 @@ const geocodingClient = mbxGeocoding({ accessToken: map_token });
       res.render('listings/home.ejs' , {allListings})
     
 };
+module.exports.editListingPage = async (req, res) => {
+    let { id } = req.params;
+    const listing = await Listing.findById(id);
 
-module.exports.editListingPage = async (req, res)=>{
-    let {id} = req.params;
-     const listing = await Listing.findById(id);
-     if (!listing) {
-        req.flash('error' , 'Invalid URL! Listing Not Found');
-      return  res.redirect('/listings')
-     }
-     
+    if (!listing) {
+        req.flash('error', 'Invalid URL! Listing Not Found');
+        return res.redirect('/listings');
+    }
+
     let originalImage = listing.image.url
-originalImage = originalImage.replace('/upload', '/upload/w_200,h_200/e_blur:100')
-    
-     res.render('listings/edit.ejs', {listing , originalImage})
+    if (listing.image && listing.image.url) {
+        originalImage = listing.image.url.replace('/upload', '/upload/w_200,h_200/e_blur:100');
+    }
+
+    res.render('listings/edit.ejs', { listing, originalImage });
 };
+
 
 module.exports.newListing = (req , res)=>{
     res.render('listings/new.ejs')
