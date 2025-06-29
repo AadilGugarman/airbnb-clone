@@ -21,7 +21,7 @@ const LocalStrategy = require('passport-local');
 
 
 const port = 8080;
-// const MongoURL = 'mongodb://127.0.0.1:27017/airbnb'
+
 const dbUrl = process.env.ATLAS_DB
 
 main().then((res)=>{
@@ -62,9 +62,6 @@ const sessionOptions = ({
 })
 
 
-app.get('/airbnb' , (req , res )=>{
-    res.send('hi i am root')
-})
 
 app.use(session(sessionOptions))
 app.use(flash());

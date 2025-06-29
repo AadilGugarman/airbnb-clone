@@ -1,14 +1,19 @@
 {
-  "name": "airbnb",
+  "name": "airbnb-clone",
   "version": "1.0.0",
+  "description": "A full-stack Airbnb-style web application using Node.js, Express, MongoDB, and EJS.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"No test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "Aadil",
   "license": "ISC",
-  "description": "",
+  "keywords": ["airbnb", "express", "node", "mongodb", "ejs", "fullstack"],
+  "engines": {
+    "node": "v22.16.0"
+  },
   "dependencies": {
     "@mapbox/mapbox-sdk": "^0.16.1",
     "cloudinary": "^1.41.3",
