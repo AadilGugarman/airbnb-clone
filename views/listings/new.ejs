@@ -1,7 +1,7 @@
 <% layout ('layouts/boilerplate')%>
 <div class="container">
   <h2 class="my-2">Create New Listing</h2>
-  <form action="/listings" class="needs-validation" novalidate method="post">
+  <form action="/listings" class="needs-validation" novalidate method="post" enctype="multipart/form-data">
     <div class="mb-3">
       <label for="title" class="form-label">Title</label>
       <input
@@ -26,13 +26,13 @@
     </div>
 
     <div class="mb-3">
-      <label class="form-label" for="image">Image</label>
+      <label class="form-label" for="image">Upload image</label>
       <input
         class="form-control"
-        type="text"
+        type="file"
         id="image"
         name="listing[image]"
-        placeholder="enter image URL"
+        required
       />
       <div class="invalid-feedback">Please provide a valid image URL.</div>
     </div>

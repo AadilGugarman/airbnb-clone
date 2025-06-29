@@ -1,3 +1,6 @@
+if(process.env.NODE_ENV != "PRODUCTION"){
+    require('dotenv').config()
+}
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -9,6 +12,7 @@ const listingsRouter = require('./routes/listing.js');
 const reviewsRouter = require('./routes/review.js');
 const usersRouter = require('./routes/user.js');
 const session =  require('express-session');
+const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const User = require('./models/user.js')
 const passport = require('passport')
@@ -17,7 +21,8 @@ const LocalStrategy = require('passport-local');
 
 
 const port = 8080;
-const MongoURL = 'mongodb://127.0.0.1:27017/airbnb'
+// const MongoURL = 'mongodb://127.0.0.1:27017/airbnb'
+const dbUrl = process.env.ATLAS_DB
 
 main().then((res)=>{
     console.log('connected to DB')
@@ -25,7 +30,7 @@ main().then((res)=>{
   console.log(err)
 })
 async function main(){
-    await mongoose.connect(MongoURL)
+    await mongoose.connect(dbUrl)
 };
 
 app.set('view engine' , 'ejs');
@@ -36,8 +41,17 @@ app.use(express.json());
 app.use(methodOverride("_method"));
 app.engine('ejs' , ejsMate);
 
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  crypto: {
+    secret: process.env.SECRET
+  },
+  touchAfter:24*3600
+});
+
 const sessionOptions = ({
-    secret: 'secretCode',
+    store,
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true ,
     cookie:{

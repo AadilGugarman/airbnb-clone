@@ -1,19 +1,159 @@
 <% layout('layouts/boilerplate') %>
 <body>
   <div class="container my-3"></div>
-  <div class="row ms-2">
+ <div class="d-flex scroll-hide align-items-center gap-4 px-3 overflow-auto mb-2 py-2 border-bottom">
+  <div class="text-center">
+    <a href="#" class="text-dark text-decoration-none">
+      <i class="fa-solid fa-mountain-sun fa-lg"></i><br />
+      <small>Mountains</small>
+    </a>
+  </div>
+  <div class="text-center">
+    <a href="#" class="text-dark text-decoration-none">
+      <i class="fa-solid fa-umbrella-beach fa-lg"></i><br />
+      <small>Beach</small>
+    </a>
+  </div>
+  <div class="text-center">
+    <a href="#" class="text-dark text-decoration-none">
+      <i class="fa-solid fa-city fa-lg"></i><br />
+      <small>City</small>
+    </a>
+  </div>
+  <div class="text-center">
+    <a href="#" class="text-dark text-decoration-none">
+      <i class="fa-solid fa-campground fa-lg"></i><br />
+      <small>Camping</small>
+    </a>
+  </div>
+  <div class="text-center">
+    <a href="#" class="text-dark text-decoration-none">
+      <i class="fa-solid fa-water fa-lg"></i><br />
+      <small>Lake</small>
+    </a>
+  </div>
+  <div class="text-center">
+    <a href="#" class="text-dark text-decoration-none">
+      <i class="fa-solid fa-chess-rook fa-lg"></i><br />
+      <small>Castle</small>
+    </a>
+  </div>
+  <div class="text-center">
+    <a href="#" class="text-dark text-decoration-none">
+      <i class="fa-solid fa-tree fa-lg"></i><br />
+      <small>Forest</small>
+    </a>
+  </div>
+  <div class="text-center">
+    <a href="#" class="text-dark text-decoration-none">
+      <i class="fa-solid fa-sun fa-lg"></i><br />
+      <small>Desert</small>
+    </a>
+  </div>
+  <div class="text-center">
+    <a href="#" class="text-dark text-decoration-none">
+      <i class="fa-solid fa-sailboat fa-lg"></i><br />
+      <small>Boats</small>
+    </a>
+  </div>
+  <div class="text-center">
+    <a href="#" class="text-dark text-decoration-none">
+      <i class="fa-solid fa-gem fa-lg"></i><br />
+      <small>Luxe</small>
+    </a>
+  </div>
+  <div class="text-center">
+    <a href="#" class="text-dark text-decoration-none">
+      <i class="fa-solid fa-person-shelter fa-lg"></i><br />
+      <small>Caves</small>
+    </a>
+  </div>
+  <div class="text-center">
+    <a href="#" class="text-dark text-decoration-none">
+      <i class="fa-solid fa-tractor fa-lg"></i><br />
+      <small>Farms</small>
+    </a>
+  </div>
+  <div class="text-center">
+    <a href="#" class="text-dark text-decoration-none">
+      <i class="fa-solid fa-igloo fa-lg"></i><br />
+      <small>Arctic</small>
+    </a>
+  </div>
+  <div class="text-center">
+    <a href="#" class="text-dark text-decoration-none">
+      <i class="fa-solid fa-person-swimming fa-lg"></i><br />
+      <small>Pools</small>
+    </a>
+  </div>
+  <div class="text-center">
+    <a href="#" class="text-dark text-decoration-none">
+      <i class="fa-solid fa-house-chimney-window fa-lg"></i><br />
+      <small>Countryside</small>
+    </a>
+  </div>
+  <div class="text-center">
+  <a href="#" class="text-dark text-decoration-none">
+    <i class="fa-solid fa-ship fa-lg"></i><br />
+    <small>Boats</small>
+  </a>
+</div>
+<div class="text-center">
+  <a href="#" class="text-dark text-decoration-none">
+    <i class="fa-solid fa-tree fa-lg"></i><br />
+    <small>Forest</small>
+  </a>
+</div>
+
+
+<div class="text-center">
+  <a href="#" class="text-dark text-decoration-none">
+    <i class="fa-solid fa-snowflake fa-lg"></i><br />
+    <small>Snow</small>
+  </a>
+</div>
+
+
+<div class="text-center">
+  <a href="#" class="text-dark text-decoration-none">
+    <i class="fa-solid fa-fire fa-lg"></i><br />
+    <small>Cabins</small>
+  </a>
+</div>
+
+  <div class="form-check form-switch ms-auto">
+    <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+    <label class="form-check-label" for="switchCheckDefault">Filter</label>
+  </div>
+</div>
+</div>
+
+  <div class="row">
     <% for (let listing of allListings ){ %>
-    <div class="card home-card mb-2" style="width: 21rem">
+    <div class="card home-card col-sm-6 col-md-3 col-lg-2 mb-2">
       <a href="/listings/<%=listing._id%>"
-        ><img src="<%=listing.image%>" class="card-img-top" alt="listing_image"
+        ><img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image"
       /></a>
       <div class="card-body">
         <p class="card-text">
           <a href="/listings/<%=listing._id%>"><%=listing.title%></a>
         </p>
-        <p class="card-text">&#8377 <%=listing.price%></p>
+        <p class="card-text text-body-secondary">&#8377 <%=listing.price%> for 2 nights 
+        </p>
+       
       </div>
     </div>
     <%}%>
   </div>
 </body>
+
+<script>
+  let filterSwitch = document.getElementById('switchCheckDefault')
+  filterSwitch.addEventListener('change', ()=>{
+    if(filterSwitch.checked){
+      console.log('checked')
+    } else {
+      console.log('uncheecekd ')
+    }
+  })
+</script>
