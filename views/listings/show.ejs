@@ -5,14 +5,22 @@
 </script>
   <div class="container my-2">
   <div class="card  show-card mb-3">
-  <img src="<%=listing.image.url%>" class=" card-img-top" alt="listing_image">
+
+    <div class="mb-1">
+  <% if (listing.image?.url) { %>
+    <img src="<%= listing.image.url %>" alt="Listing Image" width="400" />
+  <% } else { %>
+    <p>No image available</p>
+  <% } %>
+</div>
+
   <div class="card-body">
     <h5 class="card-title"><%=listing.title%></h5>
     <p class="card-text"><%=listing.description%></p>
     <p class="card-text">&#8377 <%=listing.price%></p>
     <p class="card-text"><%=listing.location%></p>
     <p class="card-text"><%=listing.country%></p>
-    <p class="card-text"><small class="text-body-secondary">owned by: <%=listing.owner.name%></small></p>
+    <p class="card-text"><small class="text-body-secondary">Hosted by: <%=listing.owner.name%></small></p>
   </div>
 </div>
 <div class="border-bottom my-3"></div>

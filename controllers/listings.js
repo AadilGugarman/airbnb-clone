@@ -39,6 +39,8 @@ module.exports.showListing = async (req , res)=>{
         req.flash('error' , 'Invalid URL! Listing Not Found');
       return  res.redirect('/listings')
      }
+     console.log("Image URL:", listing.image.url);
+
      res.render('listings/show.ejs' , {listing});
 }
 
