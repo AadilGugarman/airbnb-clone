@@ -8,8 +8,9 @@ const geocodingClient = mbxGeocoding({ accessToken: map_token });
       res.render('listings/home.ejs' , {allListings})
     
 };
+
 module.exports.editListingPage = async (req, res) => {
-    let { id } = req.params;
+    const { id } = req.params;
     const listing = await Listing.findById(id);
 
     if (!listing) {
@@ -17,13 +18,14 @@ module.exports.editListingPage = async (req, res) => {
         return res.redirect('/listings');
     }
 
-    let originalImage = listing.image.url
-    if (listing.image && listing.image.url) {
-        originalImage = listing.image.url.replace('/upload', '/upload/w_200,h_200/e_blur:100');
+    let originalImage = listing.image?.url || '';
+    if (originalImage) {
+        originalImage = originalImage.replace('/upload', '/upload/w_200,h_200/e_blur:100');
     }
 
     res.render('listings/edit.ejs', { listing, originalImage });
 };
+
 
 
 module.exports.newListing = (req , res)=>{
@@ -61,7 +63,7 @@ let response = await geocodingClient.forwardGeocode({
 module.exports.editListing = async (req , res)=>{
     let {id} = req.params;
     let listing = await Listing.findByIdAndUpdate(id , {...req.body.listing});  
-    if(typeof req.file !== 'undefined'){
+    if(req.file){
     let url = req.file.path
     let filename = req.file.filename
     listing.image = {url , filename}
