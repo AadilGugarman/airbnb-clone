@@ -3,12 +3,13 @@
    let map_token = "<%= process.env.MAP_TOKEN%>";
   let listing = <%-JSON.stringify(listing)%>
 </script>
+<div class="d-flex justify-content-center">
   <div class="container my-2">
   <div class="card  show-card mb-3">
 
     <div class="mb-1">
   <% if (listing.image?.url) { %>
-    <img src="<%= listing.image.url %>" alt="Listing Image" width="400" />
+    <img src="<%= listing.image.url %>" alt="Listing Image" class="image-fluid card-img-top" />
   <% } else { %>
     <p>No image available</p>
   <% } %>
@@ -94,6 +95,7 @@
   <div id='map'  style='width: 600px; height: 300px;'></div>
  
 </div>  
+</div>
  <script src="/js/map.js"></script>
         
 

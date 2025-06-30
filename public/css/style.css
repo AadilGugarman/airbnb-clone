@@ -34,10 +34,21 @@ main {
 .navbar-collapse {
   flex-grow: 0 !important;
   display: flex;
-  justify-content: space-between;
   padding: 0 1rem;
   background-color: #fff;
 }
+
+ .custom-search {
+    border:1px solid #ff5a5f;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .custom-search:focus {
+    border: 2px solid #ff5a5f !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
 
 /* home section */
 .card {
